@@ -1,5 +1,17 @@
-
 node {
+	stage('SCM Checkout'){
+	git 'https://github.com/RajeshMahanta/my-app'
+	}
+	stage('Compile-Package'){
+	def mvnHome = tool name: 'maven-3', type: 'maven'
+		sh "${mvnHome}/bin/mvn package"
+	}
+}
+
+
+
+////////
+/*node {
    def sonarUrl = 'sonar.host.url=http://172.31.30.136:9000'
    def mvn = tool (name: 'maven3', type: 'maven') + '/bin/mvn'
    stage('SCM Checkout'){
@@ -49,3 +61,4 @@ DevOps Team""", cc: '', from: '', replyTo: '', subject: "${env.JOB_NAME} Success
    }
 }
 
+*/
